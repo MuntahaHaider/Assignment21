@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup Form</title>
+</head>
+<body>
+
+<h2>Signup Form</h2>
+
+<form id="signupForm" onsubmit="submitForm(event)">
+    <label for="fname">First Name:</label><br>
+    <input type="text" id="fname" name="fname" required><br><br>
+    <label for="lname">Last Name:</label><br>
+    <input type="text" id="lname" name="lname" required><br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<div id="formData">
+Form data will be displayed here
+
+
+</div>
+
+
+<br>
+<hr>
+<br>
+
+
+<script>
+    function submitForm(event) {
+        event.preventDefault(); // Prevent form submission to a server
+
+        // Get form data
+        var formData = new FormData(document.getElementById("signupForm"));
+
+        // Create a new div element to display form data
+        var formDataDiv = document.createElement("div");
+        formDataDiv.innerHTML = "<h2>Form Data</h2>";
+
+        // Loop through form data and display it
+        for (var pair of formData.entries()) {
+            formDataDiv.innerHTML += "<p><strong>" + pair[0] + ":</strong> " + pair[1] + "</p>";
+        }
+
+        // Append the form data div to the formData container
+        document.getElementById("formData").appendChild(formDataDiv);
+
+        // Reset the form
+        document.getElementById("signupForm").reset();
+    }
+</script> 
+
+
+
+<h2>Add Student Details</h2>
+<form id="studentForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br><br>
+    <label for="grade">Grade:</label>
+    <input type="text" id="grade" name="grade" required><br><br>
+    <button type="submit">Add Student</button>
+</form>
+
+
+
+<h2>Student Details</h2>
+<table id="studentTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Student details will be dynamically added here -->
+    </tbody>
+</table>
+   
+
+
+<div id="editForm" class="hidden">
+    <h2>Edit Student Details</h2>
+    <form id="editStudentForm">
+        <input type="hidden" id="editIndex" name="editIndex">
+        <label for="editName">Name:</label>
+        <input type="text" id="editName" name="editName" required><br><br>
+        <label for="editAge">Age:</label>
+        <input type="number" id="editAge" name="editAge" required><br><br>
+        <label for="editGrade">Grade:</label>
+        <input type="text" id="editGrade" name="editGrade" required><br><br>
+        <button type="submit">Update Student</button>
+        <button type="button" onclick="cancelEdit()">Cancel</button>
+    </form>
+</div>
+
+
+
+
+<script>
+    var studentForm = document.getElementById("studentForm");
+    var studentTable = document.getElementById("studentTable");
+    var editForm = document.getElementById("editForm");
+    var editStudentForm = document.getElementById("editStudentForm");
+
+    studentForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+        var grade = document.getElementById("grade").value;
+
+        var newRow = studentTable.insertRow(-1);
+        newRow.innerHTML = "<td>" + name + "</td><td>" + age + "</td><td>" + grade + "</td><td><button onclick='deleteRow(this)'>Delete</button><button onclick='editRow(this)'>Edit</button></td>";
+
+        // Reset form fields
+        studentForm.reset();
+    });
+
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+
+    function editRow(btn) {
+        var row = btn.parentNode.parentNode;
+        var cells = row.getElementsByTagName("td");
+        var editIndex = Array.prototype.indexOf.call(row.parentNode.rows, row);
+
+        document.getElementById("editIndex").value = editIndex;
+        document.getElementById("editName").value = cells[0].textContent;
+        document.getElementById("editAge").value = cells[1].textContent;
+        document.getElementById("editGrade").value = cells[2].textContent;
+
+        // Show the edit form
+        editForm.classList.remove("hidden");
+    }
+
+    editStudentForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var editIndex = document.getElementById("editIndex").value;
+        var name = document.getElementById("editName").value;
+        var age = document.getElementById("editAge").value;
+        var grade = document.getElementById("editGrade").value;
+
+        var row = studentTable.rows[editIndex];
+        row.innerHTML = "<td>" + name + "</td><td>" + age + "</td><td>" + grade + "</td><td><button onclick='deleteRow(this)'>Delete</button><button onclick='editRow(this)'>Edit</button></td>";
+
+        // Hide the edit form
+        editForm.classList.add("hidden");
+    });
+
+    function cancelEdit() {
+        // Hide the edit form
+        editForm.classList.add("hidden");
+    }
+</script>
+
+</body>
+</html>

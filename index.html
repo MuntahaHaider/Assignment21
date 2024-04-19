@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 21</title>
+</head>
+<body>
+    <a onclick="message()" href="#">Google</a>
+    <br><br><br><hr><br>
+
+
+
+
+    <div class="display-flex">
+        <div class="row">
+    <img width="250px" height="300px" onclick="image1()" src="https://www.ineedamobile.com/wp-content/uploads/2019/03/iphone-x-600x598.png" alt="">
+    <img width="250px" height="300px" onclick="image2()" src="https://img.etimg.com/photo/msid-99080556,imgsize-32858/VivoY56BlackEngine.jpg" alt=""> 
+    <img width="250px" height="300px" onclick="image3()" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnBcN17wBXqIgdrf6TAjbaZWVtZ4j-22fvZWIk7aZTlg&s" alt=""> 
+    <img width="250px" height="300px" onclick="image4()" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTByhMkaCYEQsjhs0ouhBZYarC5FXb2AHxtxop5saqznA&s" alt=""> 
+       </div>
+    </div>
+    <br><br><hr><br>
+
+
+
+    <table>
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>class</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>Jhon</td>
+            <td>10</td>
+            <td class="delete-btn"  onclick="deleteRow(this)"><button>Delete</button></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Doe</td>
+            <td>9</td>
+            <td class="delete-btn" onclick="deleteRow(this)"><button>Delete</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Mark</td>
+            <td>10</td>
+            <td class="delete-btn" onclick="deleteRow(this)"><button>Delete</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>James</td>
+            <td>8</td>
+            <td class="delete-btn" onclick="deleteRow(this)"><button>Delete</button></td>
+        </tr>
+    </table>
+
+<br><br><hr><br>
+<center><img width="300px" height="300px" onmouseover="src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSNk6Iwj5-xndqRWQOKAmxEGUYbehei3bXoOdTkcsGDH0-EY64klRAcJFIjZTaaJ-Zze0&usqp=CAU'" onmouseout="src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXMQHDCgFgfrBo9b9mn5DVDVN3Lojv6CWRyFNgvbUNLg&s'" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXMQHDCgFgfrBo9b9mn5DVDVN3Lojv6CWRyFNgvbUNLg&s" alt=""></center>
+<br><br><hr><br>
+
+
+
+<div id="counterDisplay">
+    <p>Counter: <span id="counter">0</span></p>
+    <button id="increaseBtn">Increase</button>
+    <button id="decreaseBtn">Decrease</button>
+</div>
+
+ <br><br><hr><br>
+
+<div>
+    <form action="">
+        <fieldset ><legend>Student BioData</legend>
+        <label for="">Full Name</label>
+        <input type="text" name="" id=""><br><br>
+        <label for="">Qualification</label>
+        <input type="text" name="" id=""><br><br>
+        <label for="">Phone</label>
+        <input type="number" name="" id=""><br><br>
+        <button>Submit</button>
+    </fieldset>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+<script src="app.js"></script>
+</html>
